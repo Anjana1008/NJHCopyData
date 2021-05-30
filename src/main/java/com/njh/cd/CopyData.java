@@ -46,13 +46,14 @@ public class CopyData {
 			
 			if(transferable.isDataFlavorSupported(DataFlavor.stringFlavor)) {
 				String data = (String) transferable.getTransferData(DataFlavor.stringFlavor);
+				data = data=data.replace("+", "").trim();
 				if(!initialValue.equals(data)) {
 					if(fileCounter == 1) {
 						sj = new StringJoiner(",");
 						sj.add(data.replaceAll("\\n", ""));
 						finalRow = data;
 						fileCounter ++;
-					}else if (fileCounter == 2) {
+					}else if (fileCounter == 2) {										
 						sj.add(data.replaceAll("\\n", ""));
 						finalRow = data;
 						fileCounter ++;
